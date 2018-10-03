@@ -156,6 +156,11 @@ class TestStream:
                           r'\'taking FalseTrue path\'',
                           line)
 
+            # For some reason, for python 3.3 types are emitted instead of
+            # classes:
+            #   type(decl): <type 'gcc.TypeDecl'>
+            line = re.sub(r'<type ', r'<class ', line)
+
             # Convert to the Python 3 format for the repr() of a frozenset:
             # e.g. from:
             #   frozenset([0, 1, 2])
