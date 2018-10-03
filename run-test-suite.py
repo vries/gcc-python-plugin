@@ -137,6 +137,11 @@ class TestStream:
             line = re.sub('/usr/include/python(.*)/(.*).h:[0-9]+',
                           r'/usr/include/python?.?/\2.h:nn',
                           line)
+            # Likewise, handle:
+            #   unknown struct PyObject * from /opt/python/2.7.14/include/python2.7/pyerrors.h:136
+            line = re.sub('/opt/python/[0-9]+.[0-9]+.[0-9]+/include/python(.*)/(.*).h:[0-9]+',
+                          r'/usr/include/python?.?/\2.h:nn',
+                          line)
 
             # Convert to the Python 3 format for the repr() of a frozenset:
             # e.g. from:
