@@ -147,6 +147,15 @@ class TestStream:
                           r'error: \1()',
                           line)
 
+            #- 'taking False path'
+            #+ 'taking True path'
+            line = re.sub(r'\'taking False path\'',
+                          r'\'taking FalseTrue path\'',
+                          line)
+            line = re.sub(r'\'taking True path\'',
+                          r'\'taking FalseTrue path\'',
+                          line)
+
             # Convert to the Python 3 format for the repr() of a frozenset:
             # e.g. from:
             #   frozenset([0, 1, 2])
