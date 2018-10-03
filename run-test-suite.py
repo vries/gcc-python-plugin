@@ -143,6 +143,10 @@ class TestStream:
                           r'/usr/include/python?.?/\2.h:nn',
                           line)
 
+            line = re.sub('error: ([a-zA-Z0-9_]*)\(.*\)$',
+                          r'error: \1()',
+                          line)
+
             # Convert to the Python 3 format for the repr() of a frozenset:
             # e.g. from:
             #   frozenset([0, 1, 2])
