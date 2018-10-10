@@ -314,7 +314,7 @@ testdemo: plugin print-gcc-version
 	egrep '^.*demo.c:( In function |[0-9][0-9]*:[0-9][0-9]*: warning:)' \
 	  demo.err \
 	  | sed 's/:[0-9][0-9]*: warning:/:: warning:/;s/ \[enabled by default\]//' \
-	  | sed "s%$(pwd)/demo.c:%demo.c:%g" \
+	  | sed "s%$(srcdir)demo.c:%demo.c:%g" \
 	  > demo.filtered
 	diff $(srcdir)./$(DEMO_REF) demo.filtered
 	rm demo.out demo.err demo.filtered
